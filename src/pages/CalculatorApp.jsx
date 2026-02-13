@@ -612,7 +612,7 @@ export default function App() {
                                             ))}
                                         </div>
                                     </div>
-                                    <Slider label="Flour in Poolish" value={poolishPct} onChange={setPoolishPct} min={20} max={60} step={5} unit="%" subtext="How much of the total flour goes into the poolish (30\u201350% is typical)" />
+                                    <Slider label="Flour in Poolish" value={poolishPct} onChange={setPoolishPct} min={20} max={60} step={5} unit="%" subtext="How much of the total flour goes into the poolish (30 - 50% is typical)" />
                                 </>
                             )}
                         </Card>
