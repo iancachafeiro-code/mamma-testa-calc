@@ -111,7 +111,7 @@ const calcKneadingPlan = (method, tempC, hydration, flourStrength, preferment) =
                 action: "Mix flour and water only (no salt, no yeast). Cover and rest.",
                 duration: autolyseMin,
                 type: "rest",
-                tip: isCold ? "Use slightly warm water (28\u201330\u00B0C) to compensate for cold dough temp" : isWarm ? "Use cold water (10\u201315\u00B0C) to keep dough from getting too warm" : "Use room temperature water (20\u201322\u00B0C)",
+                tip: isCold ? "Use slightly warm water (28 - 30\u00B0C) to compensate for cold dough temp" : isWarm ? "Use cold water (10 - 15\u00B0C) to keep dough from getting too warm" : "Use room temperature water (20 - 22\u00B0C)",
             });
 
             steps.push({
@@ -254,7 +254,7 @@ const calcKneadingPlan = (method, tempC, hydration, flourStrength, preferment) =
                 action: "Combine flour and water in the mixer bowl with the dough hook. Mix on lowest speed for 1 min, then cover and rest.",
                 duration: autolyseMin,
                 type: "rest",
-                tip: isCold ? "Use slightly warm water (28\u201330\u00B0C) to compensate for cold environment" : isWarm ? "Use cold water (10\u201315\u00B0C) \u2014 the mixer friction will add heat" : "Room temp water works well",
+                tip: isCold ? "Use slightly warm water (28 - 30\u00B0C) to compensate for cold environment" : isWarm ? "Use cold water (10 - 15\u00B0C) \u2014 the mixer friction will add heat" : "Room temp water works well",
             });
 
             steps.push({
@@ -271,7 +271,7 @@ const calcKneadingPlan = (method, tempC, hydration, flourStrength, preferment) =
         steps.push({
             phase: "Low Speed Mix",
             icon: "\u2699\uFE0F",
-            action: "Mix on speed 1\u20132 (low). The dough will start pulling away from the sides.",
+            action: "Mix on speed 1 - 2 (low). The dough will start pulling away from the sides.",
             duration: lowSpeedMin,
             type: "active",
             tip: isWarm ? "Watch the dough temp \u2014 stop and rest if it feels warm to the touch" : "Scrape down the sides once or twice if needed",
@@ -292,8 +292,8 @@ const calcKneadingPlan = (method, tempC, hydration, flourStrength, preferment) =
             phase: "Medium Speed Knead",
             icon: "\u2699\uFE0F",
             action: isPoolish
-                ? "Mix on speed 2\u20133 (medium) until smooth and elastic. Poolish dough develops faster \u2014 check early."
-                : "Mix on speed 2\u20133 (medium) until the dough is smooth and elastic. It should cleanly pull away from the bowl.",
+                ? "Mix on speed 2 - 3 (medium) until smooth and elastic. Poolish dough develops faster \u2014 check early."
+                : "Mix on speed 2 - 3 (medium) until the dough is smooth and elastic. It should cleanly pull away from the bowl.",
             duration: medSpeedMin,
             type: "active",
             tip: isPoolish
@@ -567,13 +567,13 @@ export default function App() {
                         <Card title="Flour Type" icon={"\u{1F33E}"}>
                             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 8, marginBottom: 8 }}>
                                 {FLOUR_PRESETS.map((f) => (
-                                    <OptionPill key={f.id} selected={flourPreset === f.id} onClick={() => setFlourPreset(f.id)} description={`~${f.protein}% protein \u00B7 W${f.wRange[0]}\u2013${f.wRange[1]}`}>
+                                    <OptionPill key={f.id} selected={flourPreset === f.id} onClick={() => setFlourPreset(f.id)} description={`~${f.protein}% protein \u00B7 W${f.wRange[0]} - ${f.wRange[1]}`}>
                                         {f.label}
                                     </OptionPill>
                                 ))}
                             </div>
                             <div style={{ fontSize: 12, color: "#9a8a7a", marginTop: 12, fontStyle: "italic", lineHeight: 1.5 }}>
-                                {flour.description} {"\u00B7"} Hydration: {flour.hydrationRange[0]}\u2013{flour.hydrationRange[1]}% {"\u00B7"} Max ferment: {flour.maxFerment}h
+                                {flour.description} {"\u00B7"} Hydration: {flour.hydrationRange[0]} - {flour.hydrationRange[1]}% {"\u00B7"} Max ferment: {flour.maxFerment}h
                             </div>
                         </Card>
                     </div>
@@ -621,8 +621,8 @@ export default function App() {
                     {/* Hydration & Salt */}
                     <div style={{ animation: "fadeInUp 0.6s ease 0.19s both" }}>
                         <Card title="Hydration & Salt" icon={"\u{1F4A7}"}>
-                            <Slider label="Hydration" value={hydration} onChange={setHydration} min={flour.hydrationRange[0]} max={flour.hydrationRange[1]} step={0.5} unit="%" subtext={`Recommended for ${flour.label}: ${flour.hydrationRange[0]}\u2013${flour.hydrationRange[1]}%`} />
-                            <Slider label="Salt" value={saltPct} onChange={setSaltPct} min={1.5} max={4} step={0.1} unit="%" subtext="Neapolitan standard: 2.5\u20133%" />
+                            <Slider label="Hydration" value={hydration} onChange={setHydration} min={flour.hydrationRange[0]} max={flour.hydrationRange[1]} step={0.5} unit="%" subtext={`Recommended for ${flour.label}: ${flour.hydrationRange[0]} - ${flour.hydrationRange[1]}%`} />
+                            <Slider label="Salt" value={saltPct} onChange={setSaltPct} min={1.5} max={4} step={0.1} unit="%" subtext="Neapolitan standard: 2.5 - 3%" />
                         </Card>
                     </div>
 
