@@ -20,16 +20,13 @@ export default function CalculatorGate() {
             });
 
             if (res.ok) {
-                // Determine if we need to store session: for now, minimal implementation just redirects.
-                // In a real app we might set a cookie or token.
-                // For this simple gate, we can pass state via navigation or set a flag in localStorage.
                 localStorage.setItem("mt_invite_session", "valid");
                 navigate("/calculator/app");
             } else {
-                setError("That code isn't quite right. Try again?");
+                setError("Invalid code");
             }
         } catch (err) {
-            setError("Something went wrong. Please try again.");
+            setError("Error verifying code");
         } finally {
             setLoading(false);
         }
@@ -46,44 +43,32 @@ export default function CalculatorGate() {
             padding: 20
         }}>
             <div style={{
-                width: "100%", maxWidth: 400,
-                background: "rgba(255,252,248,0.8)",
-                padding: 40, borderRadius: 24,
-                backdropFilter: "blur(10px)",
-                border: "1px solid rgba(212, 196, 176, 0.5)",
+                width: "100%", maxWidth: 360,
                 textAlign: "center"
             }}>
-                <div style={{ fontSize: 32, marginBottom: 16 }}>🔐</div>
-                <h1 style={{ fontFamily: "'Instrument Serif', serif", fontSize: 32, color: "#2a1f14", margin: "0 0 12px" }}>
-                    Beta Access
-                </h1>
-                <p style={{ color: "#9a8a7a", marginBottom: 32, fontSize: 15, lineHeight: 1.5 }}>
-                    The Mamma Testa Calculator is currently invite-only. Please enter your access code below.
-                </p>
-
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column", gap: 12 }}>
                     <input
                         type="text"
                         value={code}
                         onChange={(e) => setCode(e.target.value)}
-                        placeholder="Enter invite code"
+                        placeholder="Invite Code"
                         style={{
                             width: "100%",
                             padding: "16px",
                             fontSize: 16,
                             border: "1px solid #d4c4b0",
                             borderRadius: 12,
-                            background: "#fff",
-                            marginBottom: 16,
+                            background: "rgba(255, 255, 255, 0.8)",
                             outline: "none",
                             textAlign: "center",
                             fontFamily: "monospace",
-                            letterSpacing: "0.1em"
+                            letterSpacing: "0.1em",
+                            color: "#2a1f14"
                         }}
                     />
 
                     {error && (
-                        <div style={{ color: "#d32f2f", fontSize: 13, marginBottom: 16, background: "rgba(211, 47, 47, 0.08)", padding: "8px 12px", borderRadius: 8 }}>
+                        <div style={{ color: "#d32f2f", fontSize: 13, textAlign: "center" }}>
                             {error}
                         </div>
                     )}
@@ -104,7 +89,7 @@ export default function CalculatorGate() {
                             transition: "background 0.2s"
                         }}
                     >
-                        {loading ? "Verifying..." : "Unlock Calculator"}
+                        {loading ? "..." : "Unlock Calculator"}
                     </button>
                 </form>
             </div>

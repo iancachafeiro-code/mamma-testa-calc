@@ -29,49 +29,15 @@ export default function LandingPage() {
 
             {/* Hero */}
             <main style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", padding: 20 }}>
-                <div style={{
-                    width: 120, height: 120, background: "#e5d8c8", borderRadius: "50%",
-                    display: "flex", alignItems: "center", justifyContent: "center",
-                    marginBottom: 32, fontSize: 40
-                }}>
-                    {/* Placeholder Logo */}
-                    🍕
-                </div>
                 <h1 style={{
                     fontFamily: "'Instrument Serif', serif",
-                    fontSize: 64,
+                    fontSize: 80,
                     color: "#2a1f14",
-                    margin: "0 0 16px",
+                    margin: 0,
                     fontWeight: 400
                 }}>
                     Coming Soon
                 </h1>
-                <p style={{
-                    color: "#9a8a7a",
-                    fontSize: 18,
-                    maxWidth: 400,
-                    marginBottom: 40,
-                    lineHeight: 1.6
-                }}>
-                    We're currently baking something special. Check back later for the full Mamma Testa experience.
-                </p>
-
-                <Link to="/calculator" style={{
-                    padding: "16px 32px",
-                    background: "#c4582a",
-                    color: "#fff",
-                    textDecoration: "none",
-                    borderRadius: 30,
-                    fontSize: 16,
-                    fontWeight: 500,
-                    transition: "transform 0.2s, background 0.2s",
-                    display: "inline-block"
-                }}
-                    onMouseOver={(e) => { e.target.style.transform = "translateY(-2px)"; e.target.style.background = "#b04820"; }}
-                    onMouseOut={(e) => { e.target.style.transform = "translateY(0)"; e.target.style.background = "#c4582a"; }}
-                >
-                    Go to Calculator &rarr;
-                </Link>
             </main>
         </div>
     );
